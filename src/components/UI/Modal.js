@@ -1,10 +1,12 @@
-import { Fragment } from 'react';
-import ReactDOM from 'react-dom';
+import { Fragment, useContext } from "react";
+import ReactDOM from "react-dom";
+import CartContext from "../../store/cart-context";
 
-import classes from './Modal.module.css';
+import classes from "./Modal.module.css";
 
 const Backdrop = (props) => {
-  return <div className={classes.backdrop} onClick={props.onClose}/>;
+  const ctx = useContext(CartContext);
+  return <div className={classes.backdrop} onClick={ctx.onHideCart} />;
 };
 
 const ModalOverlay = (props) => {
@@ -15,12 +17,12 @@ const ModalOverlay = (props) => {
   );
 };
 
-const portalElement = document.getElementById('overlays');
+const portalElement = document.getElementById("overlays");
 
 const Modal = (props) => {
   return (
     <Fragment>
-      {ReactDOM.createPortal(<Backdrop onClose={props.onClose} />, portalElement)}
+      {ReactDOM.createPortal(<Backdrop />, portalElement)}
       {ReactDOM.createPortal(
         <ModalOverlay>{props.children}</ModalOverlay>,
         portalElement

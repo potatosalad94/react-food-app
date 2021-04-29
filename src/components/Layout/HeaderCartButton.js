@@ -3,14 +3,14 @@ import { useContext } from "react";
 import classes from "./HeaderCartButton.module.css";
 import CartContext from "../../store/cart-context";
 
-const HeaderCartButton = (props) => {
+const HeaderCartButton = () => {
   const ctx = useContext(CartContext);
-  const numberOfCartItems = ctx.items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
+  const numberOfCartItems = ctx.items.reduce((accumulator, item) => {
+    return accumulator + item.amount;
   }, 0);
 
   return (
-    <button className={classes.button} onClick={props.onClick}>
+    <button className={classes.button} onClick={ctx.onShowCart}>
       <span className={classes.icon}>
         <CartIcon />
       </span>
