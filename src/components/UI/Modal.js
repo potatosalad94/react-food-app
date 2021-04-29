@@ -4,7 +4,7 @@ import CartContext from "../../store/cart-context";
 
 import classes from "./Modal.module.css";
 
-const Backdrop = (props) => {
+const Backdrop = () => {
   const ctx = useContext(CartContext);
   return <div className={classes.backdrop} onClick={ctx.onHideCart} />;
 };

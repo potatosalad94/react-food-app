@@ -4,7 +4,7 @@ import Cart from "./components/Cart/Cart";
 import React, { Fragment, useContext } from "react";
 import CartContext from "./store/cart-context";
 
-function App() {
+const App = () => {
   const ctx = useContext(CartContext);
   return (
     <Fragment>
@@ -15,6 +15,6 @@ function App() {
       </main>
     </Fragment>
   );
-}
+};
 
 export default App;
