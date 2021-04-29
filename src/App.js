@@ -1,9 +1,20 @@
-function App() {
+import Header from "./components/Layout/Header";
+import Meals from "./components/Meals/Meals";
+import Cart from "./components/Cart/Cart";
+import React, { Fragment, useContext } from "react";
+import CartContext from "./store/cart-context";
+
+const App = () => {
+  const ctx = useContext(CartContext);
   return (
-    <div>
-      <h2>Let's get started!</h2>
-    </div>
+    <Fragment>
+      {ctx.state && <Cart />}
+      <Header />
+      <main>
+        <Meals />
+      </main>
+    </Fragment>
   );
-}
+};
 
 export default App;
